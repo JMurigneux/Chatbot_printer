@@ -78,7 +78,7 @@ if input_!='':
                 [h_print,d_print]=add_new_print(doc_n,int(nb_p),int(time_sec),int(day_nb),st.session_state["agenda"])
                 reponse="nous lançons l'impression de "+str(nb_p)+" pages du document "+str(doc_n)+"."+" L'impression commence à "+str(h_print//3600)+"h"+str((h_print%3600)//60)+" "+jour[d_print]+" et durera "+str(int(nb_p)//60+1)+" min."
             else:
-                [h_print,d_print]=add_new_print(str(st.session_state["message_count"]),nb_p,time_sec,day_nb,st.session_state["agenda"])
+                [h_print,d_print]=add_new_print(str(st.session_state["message_count"]),int(nb_p),int(time_sec),int(day_nb),st.session_state["agenda"])
                 reponse="nous lançons l'impression de "+str(nb_p)+" pages. L'impression commence à "+str(h_print//3600)+"h"+str((h_print%3600)//60)+" "+jour[d_print]+" et durera "+str(int(nb_p)//60+1)+" min."
         else:
             reponse="désolé je n'ai pas compris votre requête, pour lancer une impression veuillez me donner le nom de votre document ainsi que son nombre de pages"
