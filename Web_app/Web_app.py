@@ -83,5 +83,5 @@ with placeholder.container(): #display all the messages
         st.session_state["message_count"]+=1
 
 
-# st.session_state["agenda"]
+st.session_state["agenda"]
 
