@@ -23,7 +23,7 @@ if 'agenda' not in st.session_state:
     st.session_state["agenda"]=[[],[],[],[],[],[]]
 
 if 'model' not in st.session_state:
-    st.session_state["model"]=cl.import_model("Streamlit_rakuten/model.pickle")
+    st.session_state["model"]=cl.import_model("/app/chatbot_printer/Web_app/model.pickle")
 
 jour=["lundi","mardi","mercredi",'jeudi',"dimanche"]
 
