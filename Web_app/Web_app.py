@@ -22,14 +22,21 @@ if 'message_count' not in st.session_state:
 if 'agenda' not in st.session_state:
     st.session_state["agenda"]=[[],[],[],[],[],[]]
 
+if 'agenda_display' not in st.session_state:
+    st.session_state["agenda_display"]=False
+
 if 'model' not in st.session_state:
     # st.session_state["model"]=cl.import_model("../Model/model.pickle") #for offline version
     st.session_state["model"]=cl.import_model("/app/chatbot_printer/Model/model.pickle") #for online version
 
 jour=["lundi","mardi","mercredi",'jeudi','vendredi','samedi',"dimanche"]
-
+toggle=["afficher", "cacher"]
 def vider_agenda():
     st.session_state["agenda"]=[[],[],[],[],[],[]]
+
+
+def switch_agenda():
+    st.session_state["agenda_display"]=not st.session_state["agenda_display"]
 
 with st.sidebar:
     st.write("### Programmer une impression")
@@ -50,6 +57,10 @@ with st.sidebar:
     time_sec=int(h)*3600+int(m)*60+int(s)
 
     st.button("vider l'agenda", on_click=vider_agenda)
+    st.button(toggle[st.session_state["agenda_display"]]+" l'agenda", on_click=switch_agenda)
+
+    if st.session_state["agenda_display"]:
+        st.session_state["agenda"]
    
 
 
@@ -101,5 +112,4 @@ with placeholder.container(): #display all the messages
         st.session_state["message_count"]+=1
 
 
-# st.session_state["agenda"]
 
