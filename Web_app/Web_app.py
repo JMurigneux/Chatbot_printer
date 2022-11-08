@@ -61,10 +61,9 @@ if input_!='':
         doc_n=find_doc_name(input_)
         if nb_p!=-1:
             if doc_n!=-1:
-                st.write(time_sec)
                 try:
                     [h_print,d_print]=add_new_print(doc_n,int(nb_p),int(time_sec),int(day_nb),st.session_state["agenda"])
-                    reponse="nous lançons l'impression de "+str(nb_p)+" pages du document "+str(doc_n)+"."+" L'impression commence à "+str(h_print//3600)+"h"+str((h_print%3600)//60)+"min"+str((h_print%3600)%60)+"s"+" "+jour[d_print]+" et durera "+str(int(nb_p)//60)+" min "+str(int(nb_p)%60)+" secondes."
+                    reponse="Nous lançons l'impression de "+str(nb_p)+" pages du document "+str(doc_n)+"."+" L'impression commence à "+str(h_print//3600)+"h"+str((h_print%3600)//60)+"min"+str((h_print%3600)%60)+"s"+" "+jour[d_print]+" et durera "+str(int(nb_p)//60)+" min "+str(int(nb_p)%60)+" secondes."
 
                 except TypeError:
                     if int(nb_p)>36000:
@@ -74,16 +73,16 @@ if input_!='':
             else:
                 try:
                     [h_print,d_print]=add_new_print(str(st.session_state["message_count"]),int(nb_p),int(time_sec),int(day_nb),st.session_state["agenda"])
-                    reponse="nous lançons l'impression de "+str(nb_p)+" pages. L'impression commence à "+str(h_print//3600)+"h"+str((h_print%3600)//60)+"min"+str((h_print%3600)%60)+"s"+" "+jour[d_print]+" et durera "+str(int(nb_p)//60)+" min "+str(int(nb_p)%60)+" secondes."
+                    reponse="Nous lançons l'impression de "+str(nb_p)+" pages. L'impression commence à "+str(h_print//3600)+"h"+str((h_print%3600)//60)+"min"+str((h_print%3600)%60)+"s"+" "+jour[d_print]+" et durera "+str(int(nb_p)//60)+" min "+str(int(nb_p)%60)+" secondes."
                 except TypeError:
                     if int(nb_p)>36000:
                         reponse="Votre fichier est trop gros pour être imprimé en une seule journée, on ne peut s'en charger."
                     else:
                         reponse="Votre fichier ne peut pas être imprimé cette semaine, tentez la semaine suivante."
         else:
-            reponse="désolé je n'ai pas compris votre requête, pour lancer une impression veuillez me donner le nom de votre document ainsi que son nombre de pages"
+            reponse="Désolé je n'ai pas compris votre requête, pour lancer une impression veuillez me donner le nom de votre document ainsi que son nombre de pages"
     else:
-        reponse="désolé je n'ai pas compris votre requête, pour lancer une impression veuillez me donner le nom de votre document ainsi que son nombre de pages"
+        reponse="Désolé je n'ai pas compris votre requête, pour lancer une impression veuillez me donner le nom de votre document ainsi que son nombre de pages"
 
 
     st.session_state["message_history"].append(reponse)

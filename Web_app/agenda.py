@@ -50,7 +50,3 @@ def add_new_print(doc_name,nb_pages,hour,day,agenda):
                     else:
                         return -1
     return [h_effective,d_effectif]
-
-ag=[[],[],[],[],[],[]]
-add_new_print("doc_name",45,36000,6,ag)
-print(ag)
