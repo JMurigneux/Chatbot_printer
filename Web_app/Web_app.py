@@ -23,7 +23,8 @@ if 'agenda' not in st.session_state:
     st.session_state["agenda"]=[[],[],[],[],[],[]]
 
 if 'model' not in st.session_state:
-    st.session_state["model"]=cl.import_model("/app/chatbot_printer/Web_app/model.pickle")
+    # st.session_state["model"]=cl.import_model("../Model/model.pickle") #for offline version
+    st.session_state["model"]=cl.import_model("/app/chatbot_printer/Model/model.pickle") #for online version
 
 jour=["lundi","mardi","mercredi",'jeudi',"dimanche"]
 
