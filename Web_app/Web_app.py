@@ -34,12 +34,12 @@ toggle=["afficher", "cacher"]
 def vider_agenda():
     st.session_state["agenda"]=[[],[],[],[],[],[]]
 
-
 def switch_agenda():
     st.session_state["agenda_display"]=not st.session_state["agenda_display"]
 
 with st.sidebar:
     st.write("### Programmer une impression")
+    st.write("Ouvert du lundi au samedi de 8h à 18h.")
     date_str=str(st.date_input("choisir la date"))
     [y,mois,d]=re.split("-",date_str)
 
