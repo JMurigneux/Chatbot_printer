@@ -32,7 +32,8 @@ def vider_agenda():
     st.session_state["agenda"]=[[],[],[],[],[],[]]
 
 with st.sidebar:
-    date_str=str(st.date_input("Vous pouvez modifier le jour pour tester l'agenda"))
+    st.write("### Programmer une impression")
+    date_str=str(st.date_input("choisir la date"))
     [y,mois,d]=re.split("-",date_str)
 
     F=int(d)+ ((13*int(mois)-1)/5) +int(y[2:])*3/4 +-7/4*int(y[:2])
@@ -44,7 +45,7 @@ with st.sidebar:
     # y[:2] is the first two digits of the year
     # 0=monday,1=tuesday,...,6=sunday you get it
 
-    time_str = str(st.time_input("Vous pouvez modifier l'heure pour tester l'agenda"))
+    time_str = str(st.time_input("choisir l'heure"))
     [h,m,s]=re.split(":",time_str)
     time_sec=int(h)*3600+int(m)*60+int(s)
 
