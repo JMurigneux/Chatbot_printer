@@ -26,7 +26,10 @@ if 'model' not in st.session_state:
     # st.session_state["model"]=cl.import_model("../Model/model.pickle") #for offline version
     st.session_state["model"]=cl.import_model("/app/chatbot_printer/Model/model.pickle") #for online version
 
-jour=["lundi","mardi","mercredi",'jeudi',"dimanche"]
+jour=["lundi","mardi","mercredi",'jeudi','vendredi','samedi',"dimanche"]
+
+def vider_agenda():
+    st.session_state["agenda"]=[[],[],[],[],[],[]]
 
 with st.sidebar:
     date_str=str(st.date_input("Vous pouvez modifier le jour pour tester l'agenda"))
@@ -44,6 +47,8 @@ with st.sidebar:
     time_str = str(st.time_input("Vous pouvez modifier l'heure pour tester l'agenda"))
     [h,m,s]=re.split(":",time_str)
     time_sec=int(h)*3600+int(m)*60+int(s)
+
+    st.button("vider l'agenda", on_click=vider_agenda)
    
 
 
@@ -63,7 +68,7 @@ if input_!='':
             if doc_n!=-1:
                 try:
                     [h_print,d_print]=add_new_print(doc_n,int(nb_p),int(time_sec),int(day_nb),st.session_state["agenda"])
-                    reponse="Nous lançons l'impression de "+str(nb_p)+" pages du document "+str(doc_n)+"."+" L'impression commence à "+str(h_print//3600)+"h"+str((h_print%3600)//60)+"min"+str((h_print%3600)%60)+"s"+" "+jour[d_print]+" et durera "+str(int(nb_p)//60)+" min "+str(int(nb_p)%60)+" secondes."
+                    reponse="Nous lançons l'impression de "+str(nb_p)+" pages du document "+str(doc_n)+"."+" L'impression commence à "+str(h_print//3600)+"h "+str((h_print%3600)//60)+"min "+str((h_print%3600)%60)+"s "+jour[d_print]+" et durera "+str(int(nb_p)//3600)+"heures "+str((int(nb_p)%3600)//60)+"min "+str(int(nb_p)%60)+"secondes."
 
                 except TypeError:
                     if int(nb_p)>36000:
@@ -73,7 +78,7 @@ if input_!='':
             else:
                 try:
                     [h_print,d_print]=add_new_print(str(st.session_state["message_count"]),int(nb_p),int(time_sec),int(day_nb),st.session_state["agenda"])
-                    reponse="Nous lançons l'impression de "+str(nb_p)+" pages. L'impression commence à "+str(h_print//3600)+"h"+str((h_print%3600)//60)+"min"+str((h_print%3600)%60)+"s"+" "+jour[d_print]+" et durera "+str(int(nb_p)//60)+" min "+str(int(nb_p)%60)+" secondes."
+                    reponse="Nous lançons l'impression de "+str(nb_p)+" pages. L'impression commence à "+str(h_print//3600)+"h "+str((h_print%3600)//60)+"min "+str((h_print%3600)%60)+"s "+jour[d_print]+" et durera "+str(int(nb_p)//3600)+"heures "+str((int(nb_p)%3600)//60)+"min "+str(int(nb_p)%60)+"secondes."
                 except TypeError:
                     if int(nb_p)>36000:
                         reponse="Votre fichier est trop gros pour être imprimé en une seule journée, on ne peut s'en charger."

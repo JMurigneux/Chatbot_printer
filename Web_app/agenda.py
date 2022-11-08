@@ -6,7 +6,7 @@ def add_new_print(doc_name,nb_pages,hour,day,agenda):
     d_effectif=-1
 
     if day>5:
-        return add_new_print(doc_name,nb_pages,hour,0,agenda)       #si la demande est faite un dimanche
+        return -1       #si la demande est faite un dimanche
 
 
     if hour<h_debut:                                                #si la demande est faite avant l'ouverture du magasin
